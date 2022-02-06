@@ -1,9 +1,8 @@
 /** @format */
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import http from "../../services/http/index";
 import { Buttons, Searching } from "./styles";
-import { useState } from "react/cjs/react.development";
 import Left from "../../components/searching/Left";
 import Right from "../../components/searching/Right";
 import { Col, Container, Row } from "../../styles/styles";
