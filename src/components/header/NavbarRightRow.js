@@ -1,6 +1,4 @@
 /** @format */
-
-import { useEffect, useState } from "react";
 import {
   NavbarAdd,
   NavbarNotifications,
@@ -18,18 +16,16 @@ import { IoMdArrowDropup } from "react-icons/io";
 import { AiOutlineClose } from "react-icons/ai";
 import { useHeaderContext } from "../../containers/header/context";
 import OutsideClickHandler from "react-outside-click-handler";
+import { useGlobalContext } from "../../context/context";
 
-const HeaderRight = ({
-  displaySubmenu,
-  setSearchBarControl,
-  searchBarControl,
-}) => {
+const HeaderRight = ({ displaySubmenu }) => {
   const {
     setNavbarUser,
     navbarUser,
     navbarSubmenuControl,
     setNavbarSubmenuControl,
   } = useHeaderContext();
+  const { setGlobalSearchBar, globalSearchBar } = useGlobalContext();
 
   const removeSubmenu = () => {
     setNavbarSubmenuControl(
@@ -40,7 +36,7 @@ const HeaderRight = ({
   };
 
   const navbarSearchCtr = () => {
-    setSearchBarControl((ct) => !ct);
+    setGlobalSearchBar((ct) => !ct);
     removeSubmenu();
   };
 
@@ -88,7 +84,7 @@ const HeaderRight = ({
           </NavbarUser>
           <NavbarSearch className="navbar__search">
             <button type="button" onClick={navbarSearchCtr}>
-              {searchBarControl ? (
+              {globalSearchBar ? (
                 <AiOutlineClose color="white" size={21} />
               ) : (
                 <FaSearch color="#00b4e4" size={21} />

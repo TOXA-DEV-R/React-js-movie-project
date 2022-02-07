@@ -11,7 +11,6 @@ const Right = ({ data }) => {
       {data.map((item) => {
         const { title, release_date, poster_path, overview, id } = item;
         const KONTRO_TEXTS = 240;
-
         return (
           <Card className="card" key={id}>
             <CardTop className="card__top">

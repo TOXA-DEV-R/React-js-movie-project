@@ -1,14 +1,12 @@
 /** @format */
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const GlobalContext = createContext();
 
 const GlobalProvider = ({ children }) => {
   const [globalSearchBar, setGlobalSearchBar] = useState(false);
   const [globalSearchText, setGlobalSearchText] = useState("");
-
-  useEffect(() => {}, [globalSearchBar, globalSearchText]);
 
   return (
     <GlobalContext.Provider

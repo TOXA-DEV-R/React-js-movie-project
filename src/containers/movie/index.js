@@ -1,23 +1,26 @@
 /** @format */
-
-import { useEffect, useState } from "react";
 import Menu from "../../components/movie/Menu";
 import Infos from "../../components/movie/Info";
 import Actors from "../../components/movie/Actors";
 import AllInfos from "../../components/movie/AllInfos";
 import { Col, Container, Row } from "../../styles/styles";
 import { Movie, MovieImg } from "./styles";
-import http from "../../services/http/index";
+
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { useHistory } from "react-router-dom";
+import useFetch from "../../customHooks/useFetch";
 
 const KEY = "2dd08287b759101888b5a20c23399375";
 
 const Index = () => {
-  const [data, setData] = useState([]);
-  const [loading, setLoading] = useState(true);
   const history = useHistory();
+  const ONE_MOVEI_ID = history.location.state.id;
+
+  const { loading, data } = useFetch(
+    `/3/movie/${ONE_MOVEI_ID}?api_key=${KEY}&language=en-US`
+  );
+
   const {
     production_companies,
     backdrop_path,
@@ -31,22 +34,10 @@ const Index = () => {
     genres,
     id,
   } = data;
+
   const voteAverage = Math.ceil(vote_average * 10);
   const voteAverageText =
     `${Math.ceil(vote_average * 10)}`.replace(".", "") + "%";
-
-  useEffect(() => {
-    (() => {
-      const ONE_MOVEI_ID = history.location.state.id;
-      http
-        .get(`/3/movie/${ONE_MOVEI_ID}?api_key=${KEY}&language=en-US`)
-        .then((data) => {
-          setData(data.data);
-          setLoading(false);
-        })
-        .catch((err) => console.log(err));
-    })();
-  }, []);
 
   if (loading) {
     return <div className="loading loading--full-height"></div>;

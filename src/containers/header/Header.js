@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useEffect, useState, Fragment } from "react";
+import React, { useEffect, useState, Fragment, useCallback } from "react";
 import { Navbar, NavbarContainer } from "./styles";
 import NavbarRightRow from "../../components/header/NavbarRightRow";
 import NavbarLeftRow from "../../components/header/NavbarLeftRow";
@@ -18,8 +18,7 @@ const Header = () => {
   const [navClassList, setNavClassList] = useState([]);
   const scroll = useScrollListener();
   const [headerClass, setHeaderClass] = useState([]);
-  const { globalSearchBar, setGlobalSearchBar } = useGlobalContext();
-  const [searchBarControl, setSearchBarControl] = useState(globalSearchBar);
+  const { globalSearchBar } = useGlobalContext();
 
   const displaySubmenu = (props) => {
     const { id, e } = props;
@@ -37,34 +36,26 @@ const Header = () => {
     openSubmenu({ center, bottom });
   };
 
-  const handleStateChange = (status) => {
+  const handleStateChange = useCallback((status) => {
     if (status.status === Sticky.STATUS_FIXED) {
       setHeaderClass(true);
     }
     if (status.status === Sticky.STATUS_ORIGINAL) {
       setHeaderClass(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
     const _classList = [];
-
     if (scroll.y > 150 && scroll.y - scroll.lastY > 0)
       _classList.push("nav-bar--hidden");
 
     setNavClassList(_classList);
-    setSearchBarControl(globalSearchBar);
-  }, [
-    scroll.y,
-    scroll.lastY,
-    setNavbarSubmenuControl,
-    globalSearchBar,
-    setGlobalSearchBar,
-  ]);
+  }, [scroll.y, scroll.lastY]);
 
   return (
     <Fragment>
-      <Sticky innerZ={1000} onStateChange={handleStateChange}>
+      <Sticky innerZ={1001} onStateChange={handleStateChange}>
         <Navbar
           className={`navbar ${navClassList.join(" ")} ${
             headerClass ? "stick-active" : "stick"
@@ -72,16 +63,12 @@ const Header = () => {
         >
           <NavbarContainer className="navbar__container">
             <NavbarLeftRow />
-            <NavbarRightRow
-              displaySubmenu={displaySubmenu}
-              setSearchBarControl={setSearchBarControl}
-              searchBarControl={searchBarControl}
-            />
+            <NavbarRightRow displaySubmenu={displaySubmenu} />
           </NavbarContainer>
         </Navbar>
         <Submenu />
       </Sticky>
-      {searchBarControl && <SearchBar />}
+      {globalSearchBar && <SearchBar />}
     </Fragment>
   );
 };

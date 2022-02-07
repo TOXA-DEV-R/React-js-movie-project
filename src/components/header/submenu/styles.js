@@ -1,3 +1,5 @@
+/** @format */
+
 import styled from "styled-components";
 import { css } from "styled-components";
 
@@ -24,7 +26,7 @@ export const submenuDropup = css`
 
 export const SubmenuContainer = styled.aside`
   position: absolute;
-  z-index: 101;
+  z-index: 1001;
   top: 30px;
   left: 50%;
   transform: translateX(-50%);

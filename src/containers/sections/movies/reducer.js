@@ -3,17 +3,17 @@
 const tabsReducer = (action) => {
   switch (action.type) {
     case "streaming":
-      return { ctrol: true, category: "popular" };
+      return { ctrol: true, categoryIn: "popular" };
     case "for_rent":
-      return { ctrol: true, category: "top_rated" };
+      return { ctrol: true, categoryIn: "top_rated" };
     case "thisWeek":
-      return { ctrol: true, category: "top_rated" };
+      return { ctrol: true, categoryIn: "top_rated" };
     case "in_theatre" || "movies":
-      return { ctrol: true, category: "upcoming" };
+      return { ctrol: true, categoryIn: "upcoming" };
     case "recommendations" || "today":
-      return { ctrol: true, category: "804435/recommendations" };
+      return { ctrol: true, categoryIn: "804435/recommendations" };
     case "now_playing":
-      return { ctrol: true, category: "now_playing" };
+      return { ctrol: true, categoryIn: "now_playing" };
     case "on_tv":
       return { ctrol: false };
     default:

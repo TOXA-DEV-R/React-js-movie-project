@@ -128,12 +128,12 @@ html::-webkit-scrollbar-thumb {
 .loading {
   display: flex;
   justify-content: center;
-  margin-top: 200px;
+  height: 300px;
 }
 
 .loading--full-height {
   align-items: center;
-  height: 100%;
+
 }
 
 .loading::after {

@@ -32,7 +32,7 @@ const Index = () => {
     } else {
       setSearchingUpAndDown(64);
     }
-  }, [scroll.lastY, scroll.y, globalSearchText]);
+  }, [scroll.lastY, scroll.y]);
 
   return (
     <Sticky innerZ={1000} top={searchingUpAndDown}>
@@ -59,7 +59,6 @@ const Index = () => {
               </Icon>
             </Form>
           </Section>
-          {/* <Suggest /> */}
         </Container>
       </Block>
     </Sticky>

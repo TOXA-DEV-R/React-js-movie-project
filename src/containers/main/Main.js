@@ -1,13 +1,12 @@
 /** @format */
 
-import React, { useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import Leaderboard from "../sections/leaderboard/Leaderboard";
 import Movies from "../sections/movies/Movies";
 import Searching from "../../components/sections/searching/Searching";
 import tabs from "./data";
 
 const Main = () => {
-  useEffect(() => {}, []);
   return (
     <Fragment>
       <main>

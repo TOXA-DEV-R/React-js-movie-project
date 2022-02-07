@@ -13,6 +13,7 @@ const NavbarLeftRow = () => {
   const { setGlobalSearchBar, setGlobalSearchText } = useGlobalContext();
 
   const history = useHistory();
+
   const navbarLinkOver = (id) => {
     setNavbarItemId(id);
   };
