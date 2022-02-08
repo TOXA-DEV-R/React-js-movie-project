@@ -1,10 +1,12 @@
-import React from "react";
+/** @format */
+
+import React, { memo } from "react";
 import { Leaderboards, LeaderboardsInfo, LeaderboardsInfoAll } from "./styles";
 import { Col, Container, Row } from "../../../styles/styles";
 import List from "../../../components/sections/leaderboard/List";
 import data from "./data";
 
-const Leaderboard = () => {
+const Leaderboard = memo(() => {
   return (
     <Leaderboards className="leaderboards" style={{ marginTop: "30px" }}>
       <Container
@@ -55,6 +57,6 @@ const Leaderboard = () => {
       </Container>
     </Leaderboards>
   );
-};
+});
 
 export default Leaderboard;

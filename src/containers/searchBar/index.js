@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, memo } from "react";
 import { FaSearch } from "react-icons/fa";
 import { GrFormClose } from "react-icons/gr";
 import { Block, Form, Icon, Input, Section } from "./styles";

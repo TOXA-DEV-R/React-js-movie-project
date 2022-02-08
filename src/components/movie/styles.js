@@ -6,7 +6,6 @@ import {
   flex_double_center,
   colorBlack,
   colorWhite,
-  backgroundBlack,
   backgroundWhite,
 } from "../../styles/styles";
 const trans = css`

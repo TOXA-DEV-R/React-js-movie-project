@@ -3,10 +3,8 @@
 import styled from "styled-components";
 import {
   backgroundWhite,
-  backgroundBlack,
   colorBlack,
   flex_between,
-  flex_center,
   flex_double_center,
 } from "../../styles/styles";
 
